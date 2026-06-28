@@ -1,0 +1,35 @@
+{
+  "name": "exemplarium",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Exemplarium workbench app.",
+  "license": "MIT",
+  "author": {
+    "name": "Tim Baker",
+    "email": "239700173+TimBakerCircle@users.noreply.github.com",
+    "url": "https://github.com/TimBakerCircle"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 127.0.0.1 --port 6037",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@exemplarium/core": "0.1.0",
+    "@exemplarium/ui": "0.1.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.1",
+    "vite": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

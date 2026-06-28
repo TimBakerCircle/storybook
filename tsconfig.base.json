@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": ".",
+    "paths": {
+      "@exemplarium/agents": ["packages/agents/src/index.ts"],
+      "@exemplarium/analyzer": ["packages/analyzer/src/index.ts"],
+      "@exemplarium/cli": ["packages/cli/src/index.ts"],
+      "@exemplarium/codemods": ["packages/codemods/src/index.ts"],
+      "@exemplarium/core": ["packages/core/src/index.ts"],
+      "@exemplarium/next": ["packages/next/src/index.ts"],
+      "@exemplarium/preview": ["packages/preview/src/index.ts"],
+      "@exemplarium/storybook-compat": ["packages/storybook-compat/src/index.ts"],
+      "@exemplarium/tailwind": ["packages/tailwind/src/index.ts"],
+      "@exemplarium/ui": ["packages/ui/src/index.ts"]
+    },
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node"]
+  }
+}

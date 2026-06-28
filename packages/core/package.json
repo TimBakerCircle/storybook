@@ -1,0 +1,33 @@
+{
+  "name": "@exemplarium/core",
+  "version": "0.1.0",
+  "description": "Typed graph model and shared contracts for Exemplarium.",
+  "license": "MIT",
+  "author": {
+    "name": "Tim Baker",
+    "email": "239700173+TimBakerCircle@users.noreply.github.com",
+    "url": "https://github.com/TimBakerCircle"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run src/**/*.test.ts --passWithNoTests"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "vitest": "^4.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

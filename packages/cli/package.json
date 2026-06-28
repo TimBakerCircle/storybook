@@ -1,0 +1,40 @@
+{
+  "name": "@exemplarium/cli",
+  "version": "0.1.0",
+  "description": "Command line interface for Exemplarium indexing and audits.",
+  "license": "MIT",
+  "author": {
+    "name": "Tim Baker",
+    "email": "239700173+TimBakerCircle@users.noreply.github.com",
+    "url": "https://github.com/TimBakerCircle"
+  },
+  "type": "module",
+  "bin": {
+    "exemplarium": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run src/**/*.test.ts --passWithNoTests",
+    "exemplarium": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "@exemplarium/analyzer": "0.1.0",
+    "commander": "^15.0.0"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "vitest": "^4.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
