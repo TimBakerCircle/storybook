@@ -1,0 +1,72 @@
+name: Publish Exemplarium
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run validation and package dry-runs without publishing"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Pack dry-run
+        run: |
+          npm pack --dry-run -w @exemplarium/core
+          npm pack --dry-run -w @exemplarium/next
+          npm pack --dry-run -w @exemplarium/tailwind
+          npm pack --dry-run -w @exemplarium/agents
+          npm pack --dry-run -w @exemplarium/preview
+          npm pack --dry-run -w @exemplarium/codemods
+          npm pack --dry-run -w @exemplarium/storybook-compat
+          npm pack --dry-run -w @exemplarium/analyzer
+          npm pack --dry-run -w @exemplarium/cli
+          npm pack --dry-run -w @exemplarium/ui
+
+      - name: Publish
+        if: inputs.dry_run == 'false'
+        run: |
+          npm publish --provenance --access public -w @exemplarium/core
+          npm publish --provenance --access public -w @exemplarium/next
+          npm publish --provenance --access public -w @exemplarium/tailwind
+          npm publish --provenance --access public -w @exemplarium/agents
+          npm publish --provenance --access public -w @exemplarium/preview
+          npm publish --provenance --access public -w @exemplarium/codemods
+          npm publish --provenance --access public -w @exemplarium/storybook-compat
+          npm publish --provenance --access public -w @exemplarium/analyzer
+          npm publish --provenance --access public -w @exemplarium/cli
+          npm publish --provenance --access public -w @exemplarium/ui
